@@ -89,7 +89,7 @@ console.log(process.env);
 
   async function createConnection(){
    const MONGO_URL=process.env.MONGO_URL;
-  // const Mongo_URL="mongodb://localhost/users";
+   const Mongo_URL="mongodb://localhost/users";
  //const Mongo_URL="mongodb+srv://Malatesh:Malatesh95@cluster0.asaxd.mongodb.net/users";
    
    const client=new MongoClient(MONGO_URL);
