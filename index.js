@@ -20,7 +20,7 @@ const app=express();
      "createdAt": "2022-01-07T22:13:37.883Z",
      "name": "Myron Jenkins",
      "pic": "https://cdn.fakercloud.com/avatars/madebyvadim_128.jpg",
-     "color": "color 8",
+     "color": "teal",
      "age": 92,
      "id": "2"
     },
@@ -28,7 +28,7 @@ const app=express();
      "createdAt": "2022-01-07T19:40:02.041Z",
      "name": "Tammy Batz",
      "pic": "https://cdn.fakercloud.com/avatars/johannesneu_128.jpg",
-     "color": "Red",
+     "color": "teal",
      "age": 74,
      "id": "3"
     },
@@ -37,24 +37,24 @@ const app=express();
      "name": "Rosie Rodriguez",
      "pic": "https://cdn.fakercloud.com/avatars/guiiipontes_128.jpg",
      "color": "teal",
-     "age": 78,
-     "id": "8"
+     "age": 60,
+     "id": "4"
     },
     {
      "createdAt": "2022-01-08T10:42:31.252Z",
      "name": "Mrs. Josephine Roob",
      "pic": "https://cdn.fakercloud.com/avatars/psdesignuk_128.jpg",
      "color": "yellow",
-     "age": 43,
-     "id": "4"
+     "age": 16,
+     "id": "5"
     },
     {
      "createdAt": "2022-01-07T20:04:24.383Z",
      "name": "Woodrow Hane",
      "pic": "https://cdn.fakercloud.com/avatars/badlittleduck_128.jpg",
-     "color": "teal",
-     "age": 16,
-     "id": "28"
+     "color": "yellow",
+     "age": 17,
+     "id": "6"
     },
     {
      "createdAt": "2022-01-08T10:47:03.182Z",
@@ -62,7 +62,7 @@ const app=express();
      "pic": "https://cdn.fakercloud.com/avatars/bermonpainter_128.jpg",
      "color": "Red",
      "age": 47,
-     "id": "5"
+     "id": "7"
     },
     {
      "createdAt": "2022-01-08T13:34:20.260Z",
@@ -70,7 +70,7 @@ const app=express();
      "pic": "https://cdn.fakercloud.com/avatars/pierrestoffe_128.jpg",
      "color": "teal",
      "age": 34,
-     "id": "6"
+     "id": "8"
     },
     {
      "createdAt": "2022-01-08T03:27:11.846Z",
@@ -78,29 +78,32 @@ const app=express();
      "pic": "https://cdn.fakercloud.com/avatars/timmillwood_128.jpg",
      "color": "green",
      "age": 22,
-     "id": "7"
+     "id": "9"
     }
 ]*/;
 
 app.use(express.json());
 const PORT=5000;
 dotenv.config();
-console.log(process.env);
+//console.log(process.env);
 
   async function createConnection(){
-   const MONGO_URL=process.env.MONGO_URL;
+   //const MONGO_URL=process.env.MONGO_URL;
    const Mongo_URL="mongodb://localhost/users";
  //const Mongo_URL="mongodb+srv://Malatesh:Malatesh95@cluster0.asaxd.mongodb.net/users";
-   
-   const client=new MongoClient(MONGO_URL);
+  // const client=new MongoClient(MONGO_URL);
+   const client=new MongoClient(Mongo_URL);
    await client.connect();
    console.log("Succssfully Connected!!! ");
-  // const user= await client.db("users").collection("people").findOne({id:"8"});
-  // console.log(user);
+   const user= await client.db("users").collection("people").findOne({id:"8"});
+   console.log(user);
  // const insertdata=await client.db("users").collection("people").insertMany(users)
 
   return client;
    }
+
+
+
    createConnection();
 
 app.get("/",(request,response)=>{
